@@ -20,18 +20,22 @@ import (
   "github.com/Iwark/maptostruct"
 )
 
-type MyStruct struct {
+type Person struct {
   Name string
   Age  int64
+  Gender string `mts:"gender"`
 }
 
 func main() {
-    myData := make(map[string]interface{})
-    myData["Name"] = "Tony"
-    myData["Age"] = int64(23)
+    person := map[string]interface{}{
+        "Name":   "Iwark",
+        "Age":    24,
+        "gender": "man",
+        "hobby":  "playing the piano",
+    }
 
-    result := &MyStruct{}
-    err := maptostruct.Do(myData, result)
+    result := &Person{}
+    err := maptostruct.Do(person, result)
     if err != nil {
         fmt.Println(err)
     }
